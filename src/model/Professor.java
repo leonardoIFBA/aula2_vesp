@@ -1,0 +1,30 @@
+package model;
+
+public class Professor extends Pessoa{
+    private String siape;    
+
+    public Professor(int id, String nome, String email, String siape) {
+        super(id, nome, email);
+        this.siape = siape;
+    }
+
+    @Override
+    public double calculaBonus() {
+        return 0;
+    }
+
+    @Override
+    public String toString() {
+        return "Professor [" + super.toString() + "siape =" + siape + "]";
+    }
+
+    public String getSiape() {
+        return siape;
+    }
+
+    public void setSiape(String siape) {
+        this.siape = siape;
+    }
+    
+    
+}
