@@ -1,34 +1,44 @@
 package repository;
-
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import model.Aluno;
 import model.Curso;
 
-public class AlunoRepository {
+/**** As classes da camada repository em projetos Java, servem para abstrair o acesso aos dados. 
+ * Elas isolam a regra de negócio da tecnologia de persistência */
+public class AlunoRepository{
+    /** A lista de alunos irá simular nossa tabela do banco de dados */
     private List<Aluno> alunos = new ArrayList<>();
+    /**** simula o identificador do objeto cadastrado */
     private static int contadorId = 1;
 
+    /*** o construtor da classe cria 3 objetos aluno e adiciona na lista de alunos, simula uma tabela de BD com informações */
     public AlunoRepository(){
-        Curso c = new Curso(0, "Teste", 100);
-        //** Adicionar cursos pra testar o listarTodos */
-        alunos.add(new Aluno(contadorId++, "João", "joao@mail", 20, "111.222.333-01",c));
-        alunos.add(new Aluno(contadorId++, "Maria", "maria@mail", 22, "111.222.333-02",c));
-        alunos.add(new Aluno(contadorId++, "Bruxa","bruxa@mail", 1100, "111.222.333-03",c));
+        // Adicionar alguns cursos para teste
+        Curso c = new Curso(0, "Teste", 1000);
+        alunos.add(new Aluno(contadorId++, "João", "joao@mail", 20, "111.222.333.10", c));
+        alunos.add(new Aluno(contadorId++, "Maria", "maria@mail", 19, "222.333.444.01", c));
+        alunos.add(new Aluno(contadorId++, "Bruxa", "bruxa@mail",120, "333.444.555.12", c));
     }
 
+    /**** salva um objeto aluno na lista de alunos */
     public void salvar(Aluno aluno){
         aluno.setId(contadorId++);
         alunos.add(aluno);
     }
 
+    /**** exclui um objeto aluno na lista de alunos */
     public void excluir(Aluno aluno){
         alunos.remove(aluno);
     }
 
+    /**** devolve uma lista de objetos aluno */
     public List<Aluno> listarTodos(){
         return alunos;
     }
-    
+
+    /**** retorna o valor do id */
+    public static int getContadorId() {
+        return contadorId;
+    }
 }

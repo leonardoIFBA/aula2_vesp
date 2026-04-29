@@ -1,18 +1,25 @@
 package model;
+
+/**** Classe pai que  */
 public abstract class Pessoa {
-    
     private int id;
     private String nome;
-    private String email;    
+    private String email;
 
-    //construtor
+    public Pessoa() {
+    }
+
     public Pessoa(int id, String nome, String email) {
-        this.id = id; 
+        this.id = id;
         this.nome = nome;
         this.email = email;
     }
 
-    //getters e Setters
+    // Método abstrato - cada tipo de pessoa calcula algo diferente
+    public abstract double calcularBonus();
+
+    /**** metodos geter e seter */
+    // Método concreto - todos compartilham
     public int getId() {
         return id;
     }
@@ -37,16 +44,12 @@ public abstract class Pessoa {
         this.email = email;
     }
 
-    //Método abstrato - trabalhar o polimorfismo
-    public abstract double calculaBonus();
-    
-    //toString
     @Override
     public String toString() {
-        return "id=" + id + ", nome=" + nome + ", email=" + email;
+        return "id=" + id + ", nome=" + nome + ", email=" + email ;
     }
 
-    
+        
     
     
 }
